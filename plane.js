@@ -100,6 +100,7 @@ function resetGame() {
     hb.innerText = boss1.hp;
     keys["d"] =false;
     keys["a"] =false;
+    keys["w"] =false;
 }
 
 let planet = new Image();
