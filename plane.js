@@ -98,6 +98,8 @@ function resetGame() {
     sn = 1;
     score.innerText = sn;
     hb.innerText = boss1.hp;
+    keys["d"] =false;
+    keys["a"] =false;
 }
 
 let planet = new Image();
