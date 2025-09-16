@@ -81,6 +81,36 @@ class boss{
     }
 }
 
+class fri{
+    static fs=10;
+    constructor(x){
+        this.x=x;
+        this.y=1000;
+        let txr=Math.random;
+        this.tx=new Image();
+        if(txr<0.25){
+            this.tx.src="f1.png";
+            this.tp=1;
+        }
+        else if(txr<0.5){
+            this.tx.src="f2.png";
+            this.tp=2;
+        }
+        else if(txr<0.75){
+            this.tx.src="f3.png";
+            this.tp=3;
+        }
+        else{
+            this.tx.src="f4.png";
+            this.tp=4;
+        }
+        this.cd=20;
+    }
+    move(){
+        this.y-=fri.fs;
+    }
+}
+
 function resetGame() {
     x = 960 - 55;
     y = 1000 - 53;
@@ -108,6 +138,7 @@ planet.src = "plane.png";
 let x = 960 - 55;
 let y = 1000 - 53;
 let s = 10;
+let fcd=10;
 let bk = document.querySelector("#bk");
 let pen = bk.getContext("2d");
 let keys = {};
@@ -117,6 +148,7 @@ let pe=0.005;
 let mines=[];
 let buls=[];
 let enes=[];
+let fris=[];
 let ctrl=0;
 let bc=60;
 let boss1=new boss();
@@ -153,6 +185,44 @@ function mainloop() {
 
     pen.clearRect(0, 0, bk.width, bk.height);
     prob=Math.random();
+
+    fcd++;
+    if(keys["h"]&&fcd>10){
+        fcd=0;
+        for(let i=0;i<8;i++){
+            let nf=new fri(bk.width*Math.random());
+            fris.push(nf);
+        }
+    }
+    for(let i=0;i<fris.length;i++){
+        fris[i].cd++;
+    }
+    for(let i=0;i<fris.length;i++){
+        fris[i].move();
+        let xx,yy;
+        if(fris[i].tp==1){
+            xx=fris[i].x-55;
+            yy=fris[i].y-50.5;
+        }
+        else if(fris[i].tp==2){
+            xx=fris[i].x-63;
+            yy=fris[i].y-63;
+        }
+        else if(fris[i].tp==3){
+            xx=fris[i].x-55;
+            yy=fris[i].y-85.5;
+        }
+        else if(fris[i].tp==4){
+            xx=fris[i].x-55;
+            yy=fris[i].y-47.5;
+        }
+        pen.drawImage(fris[i].tx,xx, yy,fris[i].tx.width,fris[i].tx.height);
+        if(fris[i].cd>=20){
+            fris[i].cd=0;
+            let nb=new bul(0,fris[i].x,fris[i].y-90);
+            buls.push(nb);
+        }
+    }
 
     if(boss1.hp<=0){
         alert("你赢了！");
@@ -248,7 +318,7 @@ function mainloop() {
             xx=enes[i].x-55;
             yy=enes[i].y-47.5;
         }
-        pen.drawImage(enes[i].tx,xx, yy, 110, 95);
+        pen.drawImage(enes[i].tx,xx, yy,enes[i].tx.width,enes[i].tx.height);
         if(enes[i].cd>=70){
             enes[i].cd=0;
             let nb=new bul(1,enes[i].x,enes[i].y+90);
@@ -260,7 +330,7 @@ function mainloop() {
     }
 
     bc++;
-    if(keys["w"]&&bc>=ss){
+    if(keys[" "]&&bc>=ss){
         bc=0;
         let nb=new bul(0,x+55,y+10);
         buls.push(nb);
