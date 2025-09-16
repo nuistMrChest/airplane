@@ -413,6 +413,20 @@ function mainloop() {
         }
     }
 
+    for (let i = fris.length - 1; i >= 0; i--) {
+        for (let j = buls.length - 1; j >= 0; j--) {
+            let ex = fris[i].x;
+            let ey = fris[i].y;
+            let bx = buls[j].x;
+            let by = buls[j].y;
+            if (Math.abs(ex - bx) < 60 && Math.abs(ey - by) < 60&&buls[j].drct==1) {
+                fris.splice(i, 1);
+                buls.splice(j, 1);
+                break; 
+            }
+        }
+    }
+
     for(let i=0;i<mines.length;i++){
         if((x+55)-(mines[i].x+22)<50&&(y+53)-(mines[i].y+22)<50&&(x+55)-(mines[i].x+22)>-50&&(y+53)-(mines[i].y+22)>-50){
             alert("你寄了！！！");
