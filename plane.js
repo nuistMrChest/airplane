@@ -120,6 +120,7 @@ function resetGame() {
     mines = [];
     buls = [];
     enes = [];
+    fris=[];
     ctrl = 0;
     bc = 60;
     boss1 = new boss();
@@ -130,7 +131,8 @@ function resetGame() {
     hb.innerText = boss1.hp;
     keys["d"] =false;
     keys["a"] =false;
-    keys["w"] =false;
+    keys["h"] =false;
+    keys[" "] =false;
 }
 
 let planet = new Image();
@@ -196,6 +198,11 @@ function mainloop() {
     }
     for(let i=0;i<fris.length;i++){
         fris[i].cd++;
+    }
+    for(let i=fris.length-1;i>=0;i--){
+        if(fris[i].y<0){
+            fris.splice(i,1);
+        }
     }
     for(let i=0;i<fris.length;i++){
         fris[i].move();
