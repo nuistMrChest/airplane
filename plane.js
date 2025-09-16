@@ -86,7 +86,7 @@ class fri{
     constructor(x){
         this.x=x;
         this.y=1000;
-        let txr=Math.random;
+        let txr=Math.random();
         this.tx=new Image();
         if(txr<0.25){
             this.tx.src="f1.png";
