@@ -1,0 +1,72 @@
+#bk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("bk.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+#bkd {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+#title{
+    width: 65vw;
+    margin: auto;
+    height: 20vw;
+    background-image: url("title.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#cont{
+    width: 70vw;
+    background-color: rgb(107, 38, 38);
+    box-shadow: 15px 15px 5px rgba(0,0,0,0.);
+    display: flex;
+    flex-wrap: wrap;
+}
+.but{
+    width: 10vw;
+    height: 6vw;
+    margin: 2vw;
+    background-color: rgb(205, 83, 83);
+    box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+}
+a{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a img{
+    height: 100%;
+}
+.but:hover{
+    animation: clk 0.5s linear 0s forwards;
+}
+@keyframes clk{
+    0%{
+        background-color: rgb(205, 83, 83);
+        box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+    }
+    100%{
+        background-color: rgb(159, 60, 60);
+        box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    }
+}
