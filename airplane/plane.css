@@ -25,6 +25,9 @@ body,html{
     overflow-wrap: break-word;  
 }
 #mr{
+    all: unset;           /* 清除浏览器默认样式 */
+    display: block;       /* 如果之前 div 是块级，就改成 block */
+    cursor: pointer;      /* 鼠标变小手 */
     background-image: url("mr.png");
     background-size: cover;
     background-position: center;
@@ -37,6 +40,9 @@ body,html{
     z-index: 300;
 }
 #ml{
+    all: unset;           /* 清除浏览器默认样式 */
+    display: block;       /* 如果之前 div 是块级，就改成 block */
+    cursor: pointer;      /* 鼠标变小手 */
     background-image: url("ml.png");
     background-size: cover;
     background-position: center;
@@ -49,6 +55,9 @@ body,html{
     z-index: 300;
 }
 #st{
+    all: unset;           /* 清除浏览器默认样式 */
+    display: block;       /* 如果之前 div 是块级，就改成 block */
+    cursor: pointer;      /* 鼠标变小手 */
     background-image: url("st.png");
     background-size: cover;
     background-position: center;
