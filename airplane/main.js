@@ -32,6 +32,33 @@ document.addEventListener("keyup", (e) => {
   keys[e.key.toLowerCase()] = false;
 });
 
+let mrs=false;
+let mr=document.querySelector("#mr");
+mr.addEventListener("touchstart",()=>{
+  mrs=true;
+})
+mr.addEventListener("touchend",()=>{
+  mrs=false;
+})
+
+let mls=false;
+let ml=document.querySelector("#ml");
+ml.addEventListener("touchstart",()=>{
+  mls=true;
+})
+ml.addEventListener("touchend",()=>{
+  mls=false;
+})
+
+let sts=false;
+let st=document.querySelector("#st");
+st.addEventListener("touchstart",()=>{
+  sts=true;
+})
+st.addEventListener("touchend",()=>{
+  sts=false;
+})
+
 let score = document.querySelector("#score");
 let sn = 1;
 
@@ -61,6 +88,9 @@ function resetGame() {
   keys["a"] = false;
   keys["h"] = false;
   keys[" "] = false;
+  mrs=false;
+  mls=false;
+  sts=false;
 }
 
 function mainloop() {
@@ -235,7 +265,7 @@ function mainloop() {
   }
 
   bc++;
-  if (keys[" "] && bc >= ss) {
+  if ((keys[" "]||sts) && bc >= ss) {
     bc = 0;
     let nb = new Bul(0, x + 55, y + 10);
     buls.push(nb);
@@ -268,8 +298,8 @@ function mainloop() {
   while (mines.length > 0 && mines[0].y > 1000) {
     mines.shift();
   }
-  if (keys["d"] && x + 111 < bk.width) x += s;
-  if (keys["a"] && x > 0) x -= s;
+  if ((keys["d"]||mrs) && x + 111 < bk.width) x += s;
+  if ((keys["a"]||mls) && x > 0) x -= s;
   pen.drawImage(planet, x, y, 111, 106);
   for (let i = 0; i < mines.length; i++) {
     pen.drawImage(mines[i].tx, mines[i].x - 22, mines[i].y - 22, 44, 44);
