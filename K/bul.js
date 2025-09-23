@@ -1,5 +1,5 @@
 export class bul{
-    static spd=40;
+    static spd=10;
     constructor(drct,x,y){
         this.tex=new Image();
         this.tex2=new Image();
